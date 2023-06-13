@@ -1,0 +1,71 @@
+<!doctype html>
+<title>Hello</title>
+<script type="module" src="https://cdn.skypack.dev/three@0.130.0"></script>
+
+<html>
+    <meta charset = " utf-8">
+    <title>test </title>
+    <style type = "text/css">
+
+
+    </style>
+
+
+    
+    <body>       
+         
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+         <script type = "module" id="three">
+             import * as THREE from 'https://cdn.skypack.dev/three@0.130.0';
+     
+             const scene = new THREE.Scene();
+             const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                 
+             const renderer = new THREE.WebGLRenderer();
+             renderer .setSize( window. innerWidth, window.innerHeight);
+             document.body.appendChild( renderer . domElement );
+     
+     
+             
+     
+     
+     
+             const geometry = new THREE.BoxGeometry(150,150,150);
+             const textureLoader = new THREE.TextureLoader();
+             const texture = textureLoader.load('img/face.png');
+             const material = new THREE.MeshBasicMaterial({ map:texture, side: THREE.DoubleSide });
+             const sphere = new THREE.Mesh( geometry, material );
+             scene.add( sphere );
+     
+             const geometry2 = new THREE.SphereGeometry(15,32,16);
+             const TextureLoader2 = new THREE.TextureLoader();
+             const texture2 = textureLoader.load('img/face2.png');
+             const material2 = new THREE.MeshBasicMaterial({ map:texture2});
+             const sphere2 = new THREE.Mesh( geometry2, material2);
+             scene.add(sphere2);
+     
+     
+             camera.position.z = 50;
+     
+     
+             function animate() {
+                 sphere.rotation.x += 0.001;
+                 sphere.rotation.y += 0.001;
+     
+                 sphere2.rotation.x += 0.05;
+                 sphere2.rotation.y += 0.05;
+                 sphere2.rotation.z += 0.05;
+
+     
+                 requestAnimationFrame( animate );
+                 renderer.render(scene, camera);
+                 
+             }
+     
+             animate();    
+         </script>
+    </body>
+    
+</div>
+    
+</html>
